@@ -1,0 +1,17 @@
+/* particleJS.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    z-index: -4;
+    background: linear-gradient(90deg, #218c74, #474787);
+}
+#particles-js{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -3;
+    padding-left: 7px;
+    padding-right: 7px;
+}

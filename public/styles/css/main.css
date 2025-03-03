@@ -1,0 +1,50 @@
+/* main.css */
+@font-face{
+    font-family: iran;
+    src: url(../fonts/iran.ttf);
+}
+
+*{
+    direction: rtl;
+    font-family: iran;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 16px ;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none ;
+}
+.glass {
+    background: rgba(207, 207, 207, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+}
+.glasss {
+    background: rgba(207, 207, 207, 0.2);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+}
+.glass-button {
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.46);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.5px);
+-webkit-backdrop-filter: blur(6.5px);
+border: 1px solid rgba(255, 255, 255, 0.64);
+}
+.glass-button:hover{
+background: rgba(54, 105, 124, 0.22);
+border-radius: 16px;
+backdrop-filter: blur(8.2px);
+-webkit-backdrop-filter: blur(8.2px);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}

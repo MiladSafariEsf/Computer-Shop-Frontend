@@ -1,0 +1,169 @@
+.Dproduct-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+/* بخش محصول - چیدمان دو ستونه */
+.Dproduct-main-section {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: stretch; /* تغییر مهم اینجا */
+  min-height: 500px; /* ارتفاع حداقلی */
+}
+
+.Dproduct-image-wrapper {
+  flex: 1;
+  max-width: 600px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%; /* ارتفاع کامل */
+}
+
+.Dproduct-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* تغییر مهم برای پر کردن فضای موجود */
+  border-radius: 20px;
+} 
+
+.Dproduct-info {
+  flex: 1;
+  height: 100%; /* ارتفاع کامل */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* توزیع فضای عمودی */
+}
+.Dproduct-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #2d3436;
+}
+
+.Dproduct-price {
+  font-size: 1.8rem;
+  color: #00b894;
+  margin-bottom: 15px;
+}
+
+.Dproduct-stock {
+  font-size: 1.2rem;
+  padding: 8px 20px;
+  border-radius: 25px;
+  display: inline-block;
+}
+
+.Din-stock {
+  background: rgba(39, 174, 96, 0.2);
+  color: #27ae60;
+}
+
+.Dout-of-stock {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+/* بخش توضیحات */
+.Ddescription-box {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  color: #2d3436;
+}
+
+.Ddescription-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #2d3436;
+}
+
+/* بخش نظرات */
+.Dreviews-section {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.Dreviews-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #2d3436;
+}
+
+.Dreview-card {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.Dreview-meta {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  color: #636e72;
+  font-size: 0.9rem;
+}
+
+/* فرم نظر */
+.Dreview-form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.Dreview-form input {
+  padding: 12px 20px;
+  border: 1px solid rgba(45, 52, 54, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.Dreview-form select {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(45, 52, 54, 0.1);
+}
+
+.Dreview-form button {
+  padding: 12px 30px;
+  background: #0984e3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.Dreview-form button:hover {
+  background: #74b9ff;
+  transform: translateY(-2px);
+}
+
+/* رسپانسیو */
+@media (max-width: 768px) {
+  .product-main-section {
+    flex-direction: column;
+  }
+  
+  .Dreview-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .Dproduct-title {
+    font-size: 2rem;
+  }
+}

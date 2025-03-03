@@ -1,0 +1,234 @@
+/* home.css */
+header .nav {
+    z-index: 10000;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+}
+
+header .nav .left-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px;
+}
+
+header .nav .left-nav .login a,
+header .nav .left-nav .signup a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    /* تغییر رنگ تگ a */
+    text-decoration: none;
+    /* حذف خط زیرین تگ a */
+}
+
+header .nav .left-nav .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 8px 8px;
+    margin: 2px 2px;
+    color: #000;
+}
+
+header .nav .left-nav .signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 8px 8px;
+    margin: 2px 2px;
+    color: #000;
+}
+
+header .nav .right-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .nav .right-nav i {
+    padding: 8px;
+    font-size: 1.2rem;
+}
+
+header .nav .right-nav h1 {
+    padding: 8px;
+    font-size: 1.2rem;
+    margin: 0;
+    margin-left: 10px;
+}
+i{
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+/* slider */
+
+.header-item:hover {
+    scale: 1.05;
+    background: rgba(54, 105, 124, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 392px) {
+
+    header .nav .right-nav i {
+        font-size: 0.8rem;
+    }
+
+    header .nav .right-nav h1 {
+
+        font-size: 0.8rem;
+    }
+
+    header .nav .left-nav .login a,
+    header .nav .left-nav .signup a {
+        text-decoration: none;
+        font-size: 0.8rem;
+    }
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* slider */
+/* استایل‌های عمومی */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    direction: ltr;
+    overflow-x: hidden;
+    /* جلوگیری از اسکرول افقی */
+    overflow-y: auto;
+}
+
+.slider {
+    margin-left: auto;
+    position: relative;
+    z-index: 1;
+    margin-right: auto;
+    width: 100%;
+    /* اطمینان از اینکه اسلایدر تمام عرض صفحه را می‌گیرد */
+}
+
+.slider img {
+    width: 100%;
+    display: block;
+}
+
+.carousel-item {
+
+    text-align: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    position: fixed;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #474787;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+
+    background: rgb(75, 124, 64);
+    border-radius: 40px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #218c74;
+    border-radius: 40px;
+}
+
+/* footer */
+footer {
+
+    font-size: 1em;
+}
+
+footer .right {
+    padding: 40px;
+}
+
+footer .right .title {
+    padding: 10px 0px;
+
+    font-size: 1.2em;
+}
+
+footer .right .des {
+    color: rgba(255, 255, 255, .7);
+    line-height: 1.9em;
+    font-size: .9em;
+}
+
+footer .left {
+    padding: 40px;
+}
+
+footer .left .title {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    font-size: 1.2em;
+
+}
+
+footer .left .socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+footer .left .socials a {
+
+    font-size: 1.4em;
+}
+
+
+
+footer .bottom {
+    text-align: center;
+    padding: 15px;
+
+
+}
+.footer-item i{
+    padding: 8px;
+    margin: 4px;
+}
+.footer-item i:hover {
+    scale: 1.2;
+    background: rgba(54, 105, 124, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}

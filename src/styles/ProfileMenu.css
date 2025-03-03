@@ -1,0 +1,133 @@
+/* کانتینر کلی منوی پروفایل */
+.profile-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* دکمه پروفایل را به چپ منتقل می‌کنیم */
+}
+
+/* دکمه پروفایل */
+.profile-button {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-button:hover {
+    outline: none;
+    border: none; 
+    outline: 2px solid transparent; /* تغییر استایل outline */
+    outline-offset: 4px; /* فاصله بین outline و دایره */
+    transform: scale(1.1);
+}
+
+/* منوی بازشونده */
+.dropdown {
+    /* From https://css.glass */
+    background: #228874;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: absolute;
+    top: 110%;
+    left: 0;
+    /* منو را به سمت چپ صفحه قرار می‌دهیم */
+    width: 250px;
+    border-radius: 12px;
+    padding: 15px;
+    overflow: hidden;
+    z-index: 100;
+    animation: dropdownFadeLeft 0.3s ease;
+    /* انیمیشن جدید برای باز شدن از چپ */
+}
+
+/* اطلاعات کاربر */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.user-info span {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.user-status {
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* لینک‌های منو */
+.dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.123);
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+/* لینک خروج */
+.logout {
+    color: #d32f2f;
+}
+
+.logout:hover {
+    color: #b71c1c;
+}
+
+/* لینک‌های ورود و ثبت‌نام */
+.auth-links {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-button {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* انیمیشن باز شدن از چپ */
+@keyframes dropdownFadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+        /* منو از سمت چپ وارد می‌شود */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

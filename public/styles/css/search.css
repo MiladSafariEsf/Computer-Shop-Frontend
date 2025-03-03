@@ -1,0 +1,30 @@
+.search-div{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center;
+}
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px 15px;
+    width: 50%;
+}
+.search-box input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+}
+.search-box input::placeholder {
+    color: #aaa;
+}
+.search-box .fa-magnifying-glass {
+    color: #aaa;
+    font-size: 20px;
+
+}

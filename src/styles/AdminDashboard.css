@@ -1,0 +1,153 @@
+/* افکت گلس‌مورفیسم عمومی */
+.glass-effect {
+  background: rgb(255 255 255 / 9%);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* دکمه‌های ناوبری */
+.nav-button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(5px);
+}
+
+.glass-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.active {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* فیلدهای ورودی */
+.glass-input {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.6px);
+  -webkit-backdrop-filter: blur(13.6px);
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 0px 0px 37px 7px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.4s;
+  border: none;
+}
+
+.glass-input:focus {
+  box-shadow: 0px 0px 37px 25px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* .glass-input:hover{
+  
+} */
+/* آیتم‌های لیست */
+.list-item {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* طرح‌بندی صفحه ادمین */
+.admin-page {
+  max-width: 452px;
+  margin: 30px auto;
+  text-align: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  direction: rtl;
+}
+
+.admin-nav {
+  margin-bottom: 20px;
+}
+
+.add-pro-btn {
+  padding: 7px 50px;
+}
+
+/* new */
+
+/* استایل برای ورودی فایل */
+input[type="file"].glass-input {
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+}
+
+input[type="file"].glass-input::file-selector-button {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+input[type="file"].glass-input::file-selector-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.details-toggle {
+  cursor: pointer;
+}
+
+.description-admin {
+  margin: 0;
+}
+
+.delivery-toggle {
+  cursor: pointer;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+}
+.after-before-buttons{
+  padding: 4px 10px;
+}
+
+
+
+/* استایل فیلدهای ویرایش */
+.edit-input {
+  margin: 2px;
+  background-color: transparent;
+}
+
+.edit-input:focus {
+  /* box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.4); */
+  outline: none;
+}
+
+.edit-input::placeholder {
+  /* color: rgba(255, 255, 255, 0.6); */
+}
+.edit-delete-button{
+  margin: 2px;
+  padding: 3px 7px;
+}
