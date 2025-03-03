@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Slider() {
+    useEffect(() => {
+        const carousel = new window.bootstrap.Carousel(document.getElementById('carouselExampleInterval'), {
+            interval: 5000, // تنظیم زمان چرخش خودکار
+            ride: 'carousel' // فعال کردن چرخش خودکار
+        });
+    }, []);
+
     return (
         <section className="slider mt-3">
             <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     {[1, 2, 3, 4, 5].map((_, index) => (
-                        <div key={index} style={{border : "0px"}} className={`carousel-item ${index === 0 ? 'active' : ''}`} data-bs-interval="5000">
+                        <div key={index} style={{ border: "0px" }} className={`carousel-item ${index === 0 ? 'active' : ''}`} data-bs-interval="5000">
                             <img
                                 style={{ borderRadius: '20px', paddingLeft: '5px', paddingRight: '5px' }}
                                 src={`/SL/ll${index + 1}.jpg`}
