@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children }) => {
                     credentials: 'include'
                 });
 
-                if (response.ok) {
+                if (response.status == 200) {
                     setIsAdmin(true);  // دسترسی مجاز
                 } else {
                     setIsAdmin(false);  // دسترسی غیرمجاز

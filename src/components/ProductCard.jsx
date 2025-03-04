@@ -14,7 +14,7 @@ function ProductCard({ title, description, price, oldPrice, imageSrc, Id, onAddT
                 <p className="product-description">{description}</p>
                 <div className="price-container">
                     <span className="price">{price} تومان</span>
-                    <span className="old-price">{oldPrice} تومان</span>
+                    {/* <span className="old-price">{oldPrice} تومان</span> */}
                 </div>
                 <button
                     className="buy-button glass-button"

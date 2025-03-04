@@ -95,13 +95,15 @@ const ProductDetail = () => {
           <p className={`Dproduct-stock ${product.stock > 0 ? "in-stock" : "out-of-stock"}`}>
             {product.stock > 0 ? `موجودی: ${product.stock} عدد` : "ناموجود"}
           </p>
+          <hr />
+          <h2>توضیحات محصول</h2>
+          <p>{product.description}</p>
         </div>
       </div>
   
       {/* بخش توضیحات */}
       <div className="Ddescription-box">
-        <h2>توضیحات محصول</h2>
-        <p>{product.description}</p>
+
       </div>
   
       {/* بخش نظرات */}

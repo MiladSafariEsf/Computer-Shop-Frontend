@@ -13,7 +13,7 @@ function ProductListAdmin() {
   useEffect(() => {
     const fetchProductCount = async () => {
       try {
-        const response = await fetch('http://localhost:5195/Data/GetProductCount', {
+        const response = await fetch('http://localhost:5195/GetData/GetProductCount', {
           credentials: 'include',
         });
         if (response.ok) {
@@ -31,7 +31,7 @@ function ProductListAdmin() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:5195/Data/GetAllProduct?PageNumber=${pageNumber}`, {
+        const response = await fetch(`http://localhost:5195/GetData/GetAllProduct?PageNumber=${pageNumber}`, {
           credentials: 'include',
         });
         if (response.ok) {
@@ -57,7 +57,7 @@ function ProductListAdmin() {
 
   const handleDelete = async (productId) => {
     try {
-      const response = await fetch(`http://localhost:5195/Data/DeleteProduct?ProductId=${productId}`, {
+      const response = await fetch(`http://localhost:5195/DeleteData/DeleteProduct?ProductId=${productId}`, {
         method: 'DELETE',
         credentials: 'include',
       });
@@ -102,7 +102,7 @@ function ProductListAdmin() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5195/Data/UpdateProduct?ProductId=${editingProduct}`, {
+      const response = await fetch(`http://localhost:5195/EditData/UpdateProduct?ProductId=${editingProduct}`, {
         method: 'PUT',
         credentials: 'include',
         body: formData,

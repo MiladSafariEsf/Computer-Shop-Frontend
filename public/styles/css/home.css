@@ -64,10 +64,12 @@ header .nav .right-nav h1 {
     margin: 0;
     margin-left: 10px;
 }
-i{
+
+i {
     color: #fff;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 /* slider */
 
 .header-item:hover {
@@ -218,10 +220,12 @@ footer .bottom {
 
 
 }
-.footer-item i{
+
+.footer-item i {
     padding: 8px;
     margin: 4px;
 }
+
 .footer-item i:hover {
     scale: 1.2;
     background: rgba(54, 105, 124, 0.22);
@@ -231,4 +235,17 @@ footer .bottom {
     -webkit-backdrop-filter: blur(8.2px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

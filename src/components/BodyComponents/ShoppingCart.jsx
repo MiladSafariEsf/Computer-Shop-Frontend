@@ -8,6 +8,7 @@ function ShoppingCart() {
     const [products, setProducts] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [Successmessage , setSuccessMessage] = useState('');
     const { isAuthenticated } = useContext(AuthContext);
     // بارگذاری سبد خرید از LocalStorage
     useEffect(() => {
@@ -45,7 +46,7 @@ function ShoppingCart() {
 
     const fetchProductById = async (productId) => {
         try {
-            const response = await fetch(`http://localhost:5195/Data/GetById?id=${productId}`);
+            const response = await fetch(`http://localhost:5195/GetData/GetById?id=${productId}`);
             if (!response.ok) {
                 localStorage.clear();
                 throw new Error(`محصول با شناسه ${productId} یافت نشد.`);
@@ -88,13 +89,13 @@ function ShoppingCart() {
 
 
     const sendOrderToAPI = async () => {
-        const orders = Object.entries(cart).map(([productId, quantity]) => ({
+        const orders = Object.entries(cart).map(([productId, Quantity]) => ({
             ProductId: productId,
-            Number: quantity,
+            Quantity: Quantity,
         }));
 
         try {
-            const response = await fetch('http://localhost:5195/Data/AddOrders', {
+            const response = await fetch('http://localhost:5195/AddData/AddOrders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -112,7 +113,8 @@ function ShoppingCart() {
             console.log('سفارش با موفقیت ثبت شد:', resultText);
             setCart({});
             localStorage.removeItem('cart');
-            alert('سفارش شما با موفقیت ثبت شد!');
+            setSuccessMessage("خرید با موفقیت انجام شد!");
+            setTimeout(() => setSuccessMessage(''), 3000);
         } catch (error) {
             navigate('/login');
             console.error('خطا:', error.message);
@@ -129,7 +131,11 @@ function ShoppingCart() {
 
 
     if (Object.keys(cart).length === 0) {
-        return <p style={{ color: '#fff' }} className="text-center mt-4">سبد خرید شما خالی است!</p>;
+        return (<>
+        {Successmessage && <div className="alert alert-success" role="alert">{Successmessage}</div>}
+        <p style={{ color: '#fff' }} className="text-center mt-4">سبد خرید شما خالی است!</p>
+        </>
+    );
     }
 
     if (loading) {
@@ -144,6 +150,7 @@ function ShoppingCart() {
 
     return (
         <div className="container mt-4 glass-container">
+            
             <h2 style={{ color: '#fff' }} className="text-center">سبد خرید</h2>
             <div className="cart-cards-container">
                 {Object.keys(cart).map((productId) => {
