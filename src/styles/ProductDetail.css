@@ -1,208 +1,122 @@
-.Dproduct-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px;
+.review-container {
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  padding-right: .5rem;
 }
 
-/* بخش محصول - چیدمان دو ستونه */
-.Dproduct-main-section {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
-  align-items: stretch; /* تغییر مهم اینجا */
-  min-height: 500px; /* ارتفاع حداقلی */
-}
-
-.Dproduct-image-wrapper {
-  flex: 1;
-  max-width: 600px;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  height: 100%; /* ارتفاع کامل */
-}
-
-.Dproduct-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* تغییر مهم برای پر کردن فضای موجود */
-  border-radius: 20px;
-} 
-
-.Dproduct-info {
-  flex: 1;
-  height: 100%; /* ارتفاع کامل */
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* توزیع فضای عمودی */
-}
-.Dproduct-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #2d3436;
-}
-
-.Dproduct-price {
-  font-size: 1.8rem;
-  color: #00b894;
-  margin-bottom: 15px;
-}
-
-.Dproduct-stock {
-  font-size: 1.2rem;
-  padding: 8px 20px;
-  border-radius: 25px;
-  display: inline-block;
-}
-
-.Din-stock {
-  background: rgba(39, 174, 96, 0.2);
-  color: #27ae60;
-}
-
-.Dout-of-stock {
-  background: rgba(231, 76, 60, 0.2);
-  color: #e74c3c;
-}
-
-/* بخش توضیحات */
-.Ddescription-box {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 20px;
-  margin-bottom: 40px;
-  line-height: 1.8;
-  color: #2d3436;
-}
-
-.Ddescription-box h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: #2d3436;
-}
-
-/* بخش نظرات */
-.Dreviews-section {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 20px;
-}
-
-.Dreviews-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 30px;
-  color: #2d3436;
-}
-
-.Dreview-card {
-  background: rgba(255, 255, 255, 0.3);
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
+.D-Buttons {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
   backdrop-filter: blur(5px);
-}
+  background-color: #00000000;
 
-.Dreview-meta {
-  display: flex;
-  gap: 15px;
-  margin-top: 15px;
-  color: #636e72;
-  font-size: 0.9rem;
-}
-
-/* فرم نظر */
-.Dreview-form {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.Dreview-form input {
-  padding: 12px 20px;
-  border: 1px solid rgba(45, 52, 54, 0.1);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.Dreview-form select {
-  padding: 12px 20px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(45, 52, 54, 0.1);
-}
-
-.Dreview-form button {
-  padding: 12px 30px;
-  background: #0984e3;
-  color: white;
+  /* color: white; */
   border: none;
-  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.9em;
   cursor: pointer;
-  transition: all 0.3s;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  /* background: rgba(255, 255, 255, 0.46); */
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* backdrop-filter: blur(6.5px); */
+  -webkit-backdrop-filter: blur(6.5px);
+  /* border: 1px solid rgba(255, 255, 255, 0.64); */
 }
 
-.Dreview-form button:hover {
-  background: #74b9ff;
-  transform: translateY(-2px);
+.GContainer {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* رسپانسیو */
-@media (max-width: 768px) {
-  .product-main-section {
-    flex-direction: column;
-  }
-  
-  .Dreview-form {
-    grid-template-columns: 1fr;
-  }
-  
-  .Dproduct-title {
-    font-size: 2rem;
-  }
-}/* استایل ستاره‌ها */
-.star-icon {
-  font-size: 1.5rem;
-  color: #f1c40f;
-  cursor: pointer;
-  transition: transform 0.2s;
+.review-image {
+  width: 100%;
+  border-radius: 1rem;
 }
 
-.star-icon:hover {
-  transform: scale(1.2);
-}
-
-/* استایل صفحه‌بندی */
-.Dpagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  gap: 8px;
-}
-
-.Dpagination-btn {
-  background: rgba(255, 255, 255, 0.3);
+.add-to-cart {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: rgba(207, 207, 207, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
+  color: #fff;
+  transition: ease-in .5s;
+}
+
+.add-to-cart:hover {
+  background: #454a86;
+}
+
+.add-to-cart:focus {
+  outline: none;
+}
+
+.rating-star {
+  color: lightgray;
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s;
 }
 
-.Dpagination-btn:hover {
-  background: rgba(255, 255, 255, 0.5);
+.active-rating-star {
+  color: #ffc107;
+  cursor: pointer;
 }
 
-.Dpagination-btn.active {
-  background: #0984e3;
-  color: white;
-  font-weight: bold;
+.commnet-textbox {
+  color: #081C41;
+  font-weight: 500;
+}
+
+.commnet-textbox::placeholder {
+  color: #a9a7a7;
+  font-weight: lighter;
+}
+
+.submit-btn {
+  background-color: #228975;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  transition: ease-in-out .5s;
+}
+
+.submit-btn:hover {
+  background-color: #37637f;
+}
+
+.submit-btn:focus {
+  background-color: #454a86;
+  border: none;
+  outline: none;
+}
+
+.people-review {
+
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: rgba(207, 207, 207, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+
+}
+
+.rating {
+  color: #ffc107;
+}
+.text-mutede{
+  --bs-text-opacity: 1;
+  color: #fff;
 }

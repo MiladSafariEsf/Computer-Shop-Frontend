@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // مدیریت وضعیت ورود
 
-  const login = (userData) => {
+  const login = () => {
     setIsAuthenticated(true);
   };
 

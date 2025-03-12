@@ -46,7 +46,7 @@ function ShoppingCart() {
 
     const fetchProductById = async (productId) => {
         try {
-            const response = await fetch(`http://localhost:5195/GetData/GetById?id=${productId}`);
+            const response = await fetch(`http://localhost:5195/GetData/GetProductById?id=${productId}`);
             if (!response.ok) {
                 localStorage.clear();
                 throw new Error(`محصول با شناسه ${productId} یافت نشد.`);

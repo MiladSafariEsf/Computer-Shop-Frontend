@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function OrderList() {
+function OrderList(Params) {
     const [orders, setOrders] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -11,9 +11,18 @@ function OrderList() {
     useEffect(() => {
         const fetchOrderCount = async () => {
             try {
-                const response = await fetch('http://localhost:5195/GetData/GetOrderCount', {
-                    credentials: 'include',
-                });
+                let response;
+                if (Params.Delivered) {
+                    response = await fetch('http://localhost:5195/GetData/GetDeliveredOrderCount', {
+                        credentials: 'include',
+                    });
+                }
+                else {
+                    response = await fetch('http://localhost:5195/GetData/GetOrderCount', {
+                        credentials: 'include',
+                    });
+                }
+
                 if (response.ok) {
                     const count = await response.json();
                     setTotalPages(Math.ceil(count / 10)); // تعداد صفحات را محاسبه کنید
@@ -25,9 +34,17 @@ function OrderList() {
 
         const fetchOrders = async () => {
             try {
-                const response = await fetch(`http://localhost:5195/GetData/GetAllOrder?PageNumber=${pageNumber}`, {
-                    credentials: 'include',
-                });
+                let response;
+                if (Params.Delivered) {
+                    response = await fetch(`http://localhost:5195/GetData/GetAllDeliveredOrder?PageNumber=${pageNumber}`, {
+                        credentials: 'include',
+                    });
+                }
+                else {
+                    response = await fetch(`http://localhost:5195/GetData/GetAllOrder?PageNumber=${pageNumber}`, {
+                        credentials: 'include',
+                    });
+                }
                 if (response.ok) {
                     const data = await response.json();
                     setOrders(data); // داده‌های جدید را درون state قرار می‌دهیم
@@ -41,7 +58,7 @@ function OrderList() {
 
         fetchOrderCount();
         fetchOrders();
-    }, [pageNumber]);
+    }, [pageNumber, Params.Delivered]);
 
     const nextPage = () => {
         if (pageNumber * 10 < totalPages * 10) setPageNumber(pageNumber + 1);
@@ -54,7 +71,7 @@ function OrderList() {
     const handleDelivery = async (orderId) => {
         try {
             const response = await fetch(`http://localhost:5195/EditData/DeliverOrder?OrderId=${orderId}`, {
-                method: 'Delete',
+                method: 'Put',
                 credentials: 'include',
             });
             if (response.ok) {
@@ -84,9 +101,14 @@ function OrderList() {
                             <p>شماره کاربر: {order.user.number}</p> {/* شماره کاربر */}
                             <p>مجموع قیمت: {order.totalPrice}</p> {/* مجموع قیمت سفارش */}
                             <p>تعداد محصولات: {order.orderDetails.length}</p> {/* تعداد محصولات */}
-                            <span className="delivery-toggle" onClick={() => handleDelivery(order.id)}>
-                                {order.isDelivered ? 'تحویل شده' : 'تحویل'}
+                            <p>تاریخ سفارش: {order.createAt} </p>
+                            <span
+                                className="delivery-toggle"
+                                onClick={!Params.Delivered ? () => handleDelivery(order.id) : undefined}
+                            >
+                                {Params.Delivered ? 'تحویل شده' : 'تحویل'}
                             </span>
+
                             <button className='details-button' onClick={() => toggleDetails(order.id)}>
                                 {openOrderId === order.id ? 'پنهان کردن جزئیات' : 'نمایش جزئیات'}
                             </button>
@@ -99,7 +121,7 @@ function OrderList() {
                                 <ul>
                                     {order.orderDetails.map((item) => (
                                         <li key={item.id}>
-                                            <p>شناسه محصول: {item.productId}</p>
+                                            <p>نام محصول: {item.product.name}</p>
                                             <p>تعداد: {item.quantity}</p>
                                             <p>قیمت واحد: {item.unitPrice}</p>
                                         </li>

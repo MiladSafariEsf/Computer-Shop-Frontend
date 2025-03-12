@@ -5,13 +5,16 @@ function ProductCard({ title, description, price, oldPrice, imageSrc, Id, onAddT
     const navigate = useNavigate();
 
     return (
-        <div className="product-card glass m-1 mt-3" onClick={() => navigate(`/ProductDetail/${Id}`)}>
+        <div style={{cursor : "default"}} className="product-card glass m-1 mt-3" onClick={() => navigate(`/ProductDetail/${Id}`)}>
             <div className="card-header">
                 <img src={imageSrc} alt="تصویر محصول" className="product-image" />
             </div>
             <div className="card-body">
                 <h2 className="product-title">{title}</h2>
-                <p className="product-description">{description}</p>
+                <p className="product-description">
+                    {description.length > 15 ? description.slice(0, 15) + "..." : description}
+                </p>
+
                 <div className="price-container">
                     <span className="price">{price} تومان</span>
                     {/* <span className="old-price">{oldPrice} تومان</span> */}

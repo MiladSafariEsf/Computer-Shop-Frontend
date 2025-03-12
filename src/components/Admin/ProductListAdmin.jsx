@@ -6,7 +6,7 @@ function ProductListAdmin() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [editFormData, setEditFormData] = useState({ name: '', price: '', description: '' });
+  const [editFormData, setEditFormData] = useState({ name: '', price: '', description: '' , stock: ''});
   const [successMessage, setSuccessMessage] = useState("");
 
 
@@ -31,7 +31,7 @@ function ProductListAdmin() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:5195/GetData/GetAllProduct?PageNumber=${pageNumber}`, {
+        const response = await fetch(`http://localhost:5195/GetData/GetAllAdminProduct?PageNumber=${pageNumber}`, {
           credentials: 'include',
         });
         if (response.ok) {
@@ -79,7 +79,7 @@ function ProductListAdmin() {
 
   const handleEditClick = (product) => {
     setEditingProduct(product.id);
-    setEditFormData({ name: product.name, price: product.price, description: product.description });
+    setEditFormData({ name: product.name, price: product.price, description: product.description , stock: product.stock});
   };
 
   const handleEditChange = (e) => {
@@ -97,6 +97,7 @@ function ProductListAdmin() {
     formData.append("name", editFormData.name);
     formData.append("price", editFormData.price);
     formData.append("description", editFormData.description);
+    formData.append("stock", editFormData.stock);
     if (editFormData.image) {
       formData.append("image", editFormData.image);
     }
@@ -154,6 +155,10 @@ function ProductListAdmin() {
                 <label className="file-input-label" style={{ margin: "3px" }}>
                   توضیحات :
                   <input type="text" name="description" className="edit-input glass-input" value={editFormData.description} onChange={handleEditChange} />
+                </label>
+                <label className="file-input-label" style={{ margin: "3px" }}>
+                  موجودی :
+                  <input autoComplete="off" type="number" name="stock" className="edit-input glass-input" value={editFormData.stock} onChange={handleEditChange} />
                 </label>
                 <label className="file-input-label" style={{ margin: "3px" }}>
                   تصویر محصول:

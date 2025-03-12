@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function NewProduct() {
-  const [formData, setFormData] = useState({ name: '', price: '', description: '', image: null, CategoriesId: '' });
+  const [formData, setFormData] = useState({ name: '', price: '', description: '', image: null, CategoriesId: '' , stock : null});
   const [categories, setCategories] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -42,6 +42,7 @@ function NewProduct() {
     form.append('Description', formData.description);
     form.append('Image', formData.image);
     form.append('CategoriesId', formData.CategoriesId); // اضافه کردن دسته‌بندی به داده‌ها
+    form.append('stock', formData.stock); // اضافه کردن دسته‌بندی به داده‌ها
 
     try {
       const response = await fetch('http://localhost:5195/AddData/AddProduct', {
@@ -53,7 +54,7 @@ function NewProduct() {
       if (response.ok) {
         setSuccessMessage('محصول با موفقیت اضافه شد!');
         setTimeout(() => setSuccessMessage(''), 3000);
-        setFormData({ name: '', price: '', description: '', image: null, CategoriesId: '' });
+        setFormData({ name: '', price: '', description: '', image: null, CategoriesId: '' ,stock: null});
       } else {
         alert('خطایی رخ داده است');
       }
@@ -84,6 +85,10 @@ function NewProduct() {
           <label>
             توضیحات:
             <input type="text" name="description" className="input-field glass-input" value={formData.description} onChange={handleInputChange} />
+          </label>
+          <label>
+            موجودی:
+            <input type="text" name="stock" className="input-field glass-input" value={formData.stock} onChange={handleInputChange} />
           </label>
         </div>
         <div className="form-group">
