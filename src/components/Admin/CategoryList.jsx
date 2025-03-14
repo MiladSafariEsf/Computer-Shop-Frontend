@@ -87,7 +87,10 @@ function CategoryListAdmin() {
       const response = await fetch(`http://localhost:5195/EditData/UpdateCategory?CategoryId=${editingCategory}`, {
         method: 'PUT',
         credentials: 'include',
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",  
+        },
+        body: JSON.stringify({ categoryName: editFormData.categoryName }), 
       });
 
       if (response.ok) {

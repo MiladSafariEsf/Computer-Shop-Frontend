@@ -116,7 +116,15 @@
 .rating {
   color: #ffc107;
 }
-.text-mutede{
+
+.text-mutede {
   --bs-text-opacity: 1;
   color: #fff;
+}
+
+.UserND {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
 }

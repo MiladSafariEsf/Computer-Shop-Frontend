@@ -1,9 +1,12 @@
-.search-div{
+.search-div {
     display: flex;
     align-items: center;
     margin-top: 10px;
     justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
+
 .search-box {
     display: flex;
     justify-content: space-between;
@@ -14,17 +17,100 @@
     padding: 5px 15px;
     width: 50%;
 }
+
 .search-box input {
     border: none;
     outline: none;
     font-size: 16px;
     width: 100%;
 }
+
 .search-box input::placeholder {
     color: #aaa;
 }
+
 .search-box .fa-magnifying-glass {
     color: #aaa;
     font-size: 20px;
+}
 
+.advanced-search {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+/* یا ابلفضل */
+
+.bar-wrapper {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(207, 207, 207, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.advanced-search-title {
+    font-weight: bold;
+}
+
+.inputs-wrapper {
+    gap: 1rem;
+}
+
+@media (max-width: 989) {
+    .inputs-wrapper {
+        gap: 7rem;
+    }
+}
+
+.close-btn {
+   width: 2rem;
+   height: 2rem;
+   cursor: pointer;
+}
+
+.price-range {
+    gap: .5rem;
+}
+
+.Ainput {
+    padding: .5rem;
+    margin-inline: 1rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    transition: .3s ease-in-out;
+    width: 10rem !important;
+}
+
+.Ainput:focus {
+    outline: none;
+}
+
+.Aselect {
+    margin-bottom: 1.5rem;
+}
+
+
+.Asubmit-btn {
+    background-color: #228975;
+    color: #fff;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    transition: ease-in-out .5s;
+}
+
+.Asubmit-btn:hover {
+    background-color: #37637f;
+}
+
+.Asubmit-btn:focus {
+    background-color: #454a86;
+    border: none;
+    outline: none;
 }

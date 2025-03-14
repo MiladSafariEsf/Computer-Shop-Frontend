@@ -178,8 +178,8 @@ input[type="file"].glass-input::file-selector-button:hover {
 }
 
 .edit-delete-button {
-  margin: 2px;
-  padding: 3px 7px;
+  margin: 3px;
+  padding: 5px 10px;
 }
 
 /*new*/
@@ -248,4 +248,8 @@ select {
 .order-summary {
   display: flex;
   flex-direction: column;
+}
+.banner-image{
+  max-width: 230px;
+  max-height: 200px;
 }

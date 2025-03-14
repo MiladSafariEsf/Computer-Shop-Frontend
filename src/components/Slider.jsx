@@ -1,24 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Slider() {
+    const [slides, setSlides] = useState([]);
+
     useEffect(() => {
-        const carousel = new window.bootstrap.Carousel(document.getElementById('carouselExampleInterval'), {
-            interval: 5000, // تنظیم زمان چرخش خودکار
-            ride: 'carousel' // فعال کردن چرخش خودکار
-        });
+        // دریافت تعداد اسلایدرها از API اول
+        axios.get('http://localhost:5195/GetData/GetBannerCount') // اینجا آدرس API تعداد اسلایدر را بگذار
+            .then(response => {
+                const count = response.data.count; // فرض بر این که API مقدار count را برمی‌گرداند
+
+                // دریافت اطلاعات اسلایدرها از API دوم
+                return axios.get('http://localhost:5195/GetData/GetAllBanners'); // اینجا آدرس API اسلایدرها را بگذار
+            })
+            .then(response => {
+                setSlides(response.data); // فرض بر این که API آرایه‌ای از اسلایدها را برمی‌گرداند
+            })
+            .catch(error => {
+                console.error('خطا در دریافت اطلاعات اسلایدر:', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (slides.length > 0) {
+            new window.bootstrap.Carousel(document.getElementById('carouselExampleInterval'), {
+                interval: 5000,
+                ride: 'carousel'
+            });
+        }
     }, []);
 
     return (
-        <section className="slider mt-3">
+        <>
+        {slides.length === 0 ? <></> : <section className="slider mt-3">
             <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
-                    {[1, 2, 3, 4, 5].map((_, index) => (
-                        <div key={index} style={{ border: "0px" }} className={`carousel-item ${index === 0 ? 'active' : ''}`} data-bs-interval="5000">
+                    {slides.map((slide, index) => (
+                        <div key={index} style={{border: "none"}} className={`carousel-item ${index === 0 ? 'active' : ''}`} data-bs-interval="5000">
                             <img
                                 style={{ borderRadius: '20px', paddingLeft: '5px', paddingRight: '5px' }}
-                                src={`/SL/ll${index + 1}.jpg`}
+                                src={`http://localhost:5195/GetData/GetBanerImageByPath?filePath=${slide.banerImageUrl ? slide.banerImageUrl.split('/').pop() : ''}`}
                                 className="d-block w-100"
-                                alt="Slide"
+                                alt={slide.altText || `Slide ${index + 1}`}
                             />
                         </div>
                     ))}
@@ -32,7 +55,8 @@ function Slider() {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-        </section>
+        </section>}
+        </>
     );
 }
 

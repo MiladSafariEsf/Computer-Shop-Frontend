@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function NewProduct() {
-  const [formData, setFormData] = useState({ name: '', price: '', description: '', image: null, CategoriesId: '' , stock : null});
+  const [formData, setFormData] = useState({ name: '', price: '', description: '', image: '', CategoriesId: '' , stock : ''});
   const [categories, setCategories] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -54,7 +54,7 @@ function NewProduct() {
       if (response.ok) {
         setSuccessMessage('محصول با موفقیت اضافه شد!');
         setTimeout(() => setSuccessMessage(''), 3000);
-        setFormData({ name: '', price: '', description: '', image: null, CategoriesId: '' ,stock: null});
+        setFormData({ name: '', price: '', description: '', image: '', CategoriesId: '' ,stock: ''});
       } else {
         alert('خطایی رخ داده است');
       }
@@ -95,7 +95,7 @@ function NewProduct() {
           <label>
             دسته‌بندی:
             <select name="CategoriesId" style={{background : "#fff", color : "#000"}} className="input-field glass-input" value={formData.Id} onChange={handleInputChange}>
-              <option selected>انتخاب کنید</option>
+              <option>انتخاب کنید</option>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.categoryName}

@@ -70,13 +70,13 @@ const ProductDetail = () => {
           withCredentials: true, // ارسال کوکی‌ها همراه درخواست
         }
       );
-      setRate(((ReviewCount * Rate) + newRating)/(ReviewCount + 1))
+      setRate(((ReviewCount * Rate) + newRating) / (ReviewCount + 1))
       setReviewCount(ReviewCount + 1);
       setProduct((prev) => ({
         ...prev,
         reviews: [
 
-          { ...reviewData, id: res.data.id, createAt: new Date(), userName: product.userName ,isOwner: true },
+          { ...reviewData, id: res.data.id, date: "همین الان", userName: product.userName, isOwner: true },
           ...prev.reviews,
         ],
       }));
@@ -101,7 +101,7 @@ const ProductDetail = () => {
           withCredentials: true, // ارسال کوکی‌ها همراه درخواست
         }
       );
-      
+
       if (response.status === 200) {
         setProduct((prev) => ({
           ...prev,
@@ -112,7 +112,7 @@ const ProductDetail = () => {
       console.error("خطا در حذف دیدگاه:", error);
     }
   };
-  
+
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
     cart[product.id] = (cart[product.id] || 0) + 1;
@@ -144,13 +144,34 @@ const ProductDetail = () => {
                 {/* <span className=""><s>$399.99</s></span> */}
               </div>
               <div className="mb3">
-                <i className="bi bi-star-fill text-warning"></i>
-                <i className="bi bi-star-fill text-warning"></i>
-                <i className="bi bi-star-fill text-warning"></i>
-                <i className="bi bi-star-fill text-warning"></i>
-                <i className="bi bi-star-half text-warning"></i>
-                <span className="ms-2"> {parseFloat(Rate.toFixed(1))} ({ReviewCount} نظر)</span> {/*parseFloat(product.averageRate.toFixed(1))*/}
+                {(() => {
+                  const roundedRate = Math.round(Rate * 2) / 2; // رند به نزدیک‌ترین 0.5
+                  const fullStars = Math.floor(roundedRate);
+                  const hasHalfStar = roundedRate % 1 !== 0;
+                  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+                  return (
+                    <>
+                      {/* ستاره‌های پر */}
+                      {Array.from({ length: fullStars }).map((_, index) => (
+                        <i key={index} className="bi bi-star-fill text-warning"></i>
+                      ))}
+
+                      {/* ستاره‌ی نیمه‌پر در صورت نیاز */}
+                      {hasHalfStar && <i className="bi bi-star-half text-warning"></i>}
+
+                      {/* ستاره‌های خالی */}
+                      {Array.from({ length: emptyStars }).map((_, index) => (
+                        <i key={index + 10} className="bi bi-star text-warning"></i>
+                      ))}
+
+                      <span className="ms-2">{Rate.toFixed(1)} ({ReviewCount} نظر)</span>
+                    </>
+                  );
+                })()}
               </div>
+
+
               <p className="mb-4" style={{ wordWrap: "break-word", overflowWrap: "break-word" }}>
                 {product.description}
               </p>
@@ -210,7 +231,7 @@ const ProductDetail = () => {
             product.reviews.map((review) => (
               <div key={review.id} className="people-review mb-4">
                 <div className="d-flex flex-column align-items-start mb-2">
-                  <span className="ml-2">{review.userName || "کاربر ناشناس"}</span>
+                  <div className="ml-2 UserND"><span>{review.userName || "کاربر ناشناس"}</span><span>{review.date}</span></div>
                   <div className="rating">
                     {[...Array(5)].map((_, index) => (
                       <i

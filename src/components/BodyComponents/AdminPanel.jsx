@@ -5,6 +5,8 @@ import ProductListAdmin from '../Admin/ProductListAdmin';
 import OrderList from '../Admin/OrderList';
 import CategoryList from '../Admin/CategoryList';
 import NewCategory from '../Admin/NewCategory';
+import BannerListAdmin from '../Admin/BanerList';
+import NewBanner from '../Admin/AddBaner';
 
 function AdminPage() {
   const [activeSection, setActiveSection] = useState('Products');
@@ -17,7 +19,8 @@ function AdminPage() {
       setActiveIntoSection('DeliveredOrderList');
     } else if (activeSection === 'Categories') {
       setActiveIntoSection('categoryList');
-    }
+    } else if (activeSection === 'Baners')
+      setActiveIntoSection('banerList');
   }, [activeSection]);
 
   const renderSection = () => {
@@ -43,6 +46,13 @@ function AdminPage() {
             <button className={`nav-button nav-into-button glass-button ${activeIntoSection === 'categoryList' ? 'active' : ''}`} onClick={() => setActiveIntoSection('categoryList')}>لیست دسته‌بندی‌ها</button>
           </>
         );
+      case 'Baners':
+        return (
+          <>
+            <button className={`nav-button nav-into-button glass-button ${activeIntoSection === 'addBaner' ? 'active' : ''}`} onClick={() => setActiveIntoSection('addBaner')}>اضافه کردن دسته‌بندی</button>
+            <button className={`nav-button nav-into-button glass-button ${activeIntoSection === 'banerList' ? 'active' : ''}`} onClick={() => setActiveIntoSection('banerList')}>لیست دسته‌بندی‌ها</button>
+          </>
+        );
       default:
         return null;
     }
@@ -62,6 +72,10 @@ function AdminPage() {
         return <CategoryList />;
       case 'addCategory':
         return <NewCategory />;
+      case 'addBaner':
+        return <NewBanner/>;
+      case 'banerList':
+        return <BannerListAdmin />
       default:
         return <NewProduct />;
     }
@@ -72,19 +86,25 @@ function AdminPage() {
       <nav className="admin-nav">
         <button className={`nav-button glass-button ${activeSection === 'Products' ? 'active' : ''}`} onClick={() => setActiveSection('Products')}>
           محصولات
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
             <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
           </svg>
         </button>
         <button className={`nav-button glass-button ${activeSection === 'orderLists' ? 'active' : ''}`} onClick={() => setActiveSection('orderLists')}>
           لیست سفارشات
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
             <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
           </svg>
         </button>
         <button className={`nav-button glass-button ${activeSection === 'Categories' ? 'active' : ''}`} onClick={() => setActiveSection('Categories')}>
           دسته‌بندی‌ها
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
+            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+          </svg>
+        </button>
+        <button className={`nav-button glass-button ${activeSection === 'Baners' ? 'active' : ''}`} onClick={() => setActiveSection('Baners')}>
+          بنرها
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
             <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
           </svg>
         </button>

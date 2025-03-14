@@ -4,6 +4,7 @@ function OrderList(Params) {
     const [orders, setOrders] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [successMessage, setSuccessMessage] = useState('');
 
     // وضعیت برای مدیریت باز یا بسته بودن جزئیات سفارش
     const [openOrderId, setOpenOrderId] = useState(null);
@@ -76,13 +77,19 @@ function OrderList(Params) {
             });
             if (response.ok) {
                 setOrders((orders) => orders.filter(order => order.id !== orderId));
-                alert('سفارش با موفقیت تحویل داده شد!');
+                // alert('سفارش با موفقیت تحویل داده شد!');
+                setSuccessMessage('سفارش با موفقیت تحویل داده شد!');
+                setTimeout(() => setSuccessMessage(''), 3000);
             } else {
-                alert('خطایی در تحویل سفارش رخ داد');
+                // alert('خطایی در تحویل سفارش رخ داد');
+                setSuccessMessage('خطایی در تحویل سفارش رخ داد');
+                setTimeout(() => setSuccessMessage(''), 3000);
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('مشکلی در ارتباط با سرور رخ داد.');
+            // alert('مشکلی در ارتباط با سرور رخ داد.');
+            setSuccessMessage('مشکلی در ارتباط با سرور رخ داد.');
+            setTimeout(() => setSuccessMessage(''), 3000);
         }
     };
 
@@ -93,6 +100,7 @@ function OrderList(Params) {
     return (
         <div className="order-list glass-effect">
             <h2>لیست سفارشات</h2>
+            <p>{successMessage}</p>
             <ul>
                 {orders.map((order) => (
                     <li key={order.id} className="list-item">
