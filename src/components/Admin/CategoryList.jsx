@@ -139,7 +139,6 @@ function CategoryListAdmin() {
             ) : (
               <div className="product-details">
                 <p>نام: {category.categoryName}</p>
-                <p>آیدی: {category.id}</p>
                 <div className="product-actions">
                   <button className="edit-delete-button glass-button" onClick={() => handleEditClick(category)}>ویرایش</button>
                   <button className="edit-delete-button glass-button" onClick={() => handleDelete(category.id)}>حذف</button>

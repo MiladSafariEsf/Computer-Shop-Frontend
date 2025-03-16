@@ -49,8 +49,8 @@ function AdminPage() {
       case 'Baners':
         return (
           <>
-            <button className={`nav-button nav-into-button glass-button ${activeIntoSection === 'addBaner' ? 'active' : ''}`} onClick={() => setActiveIntoSection('addBaner')}>اضافه کردن دسته‌بندی</button>
-            <button className={`nav-button nav-into-button glass-button ${activeIntoSection === 'banerList' ? 'active' : ''}`} onClick={() => setActiveIntoSection('banerList')}>لیست دسته‌بندی‌ها</button>
+            <button className={`nav-button nav-into-button glass-button ${activeIntoSection === 'addBaner' ? 'active' : ''}`} onClick={() => setActiveIntoSection('addBaner')}>اضافه کردن بنر</button>
+            <button className={`nav-button nav-into-button glass-button ${activeIntoSection === 'banerList' ? 'active' : ''}`} onClick={() => setActiveIntoSection('banerList')}>لیست بنرها</button>
           </>
         );
       default:

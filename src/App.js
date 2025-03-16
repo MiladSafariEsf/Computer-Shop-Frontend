@@ -10,6 +10,7 @@ import ShoppingCart from "./components/BodyComponents/ShoppingCart.jsx";
 import AdminDashboard from "./components/BodyComponents/AdminPanel.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx"
 import ProductDetail from "./components/BodyComponents/ProductDetail.jsx";
+import MyOrders from "./components/BodyComponents/MyOrders.jsx";
 
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/ProductDetail/:id" element={<ProductDetail />} />
-            {/* <Route path="/Admin" element={<Admin />} /> */}
+            <Route path="/MyOrders" element={<MyOrders />} />
             <Route path="/AdminDashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
             <Route path="*" element={<h1>صفحه مورد نظر یافت نشد</h1>} />
           </Routes>

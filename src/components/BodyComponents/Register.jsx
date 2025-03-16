@@ -8,6 +8,7 @@ const RegisterForm = () => {
   const [Number, setNumber] = useState('');
   const [UserName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [Address, setAddress] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
@@ -36,6 +37,10 @@ const RegisterForm = () => {
       setError('رمز عبور باید حداقل ۸ کاراکتر باشد.');
       return;
     }
+    if (Address == "") {
+      setError('فیلد آدرس نمی‌تواند خالی باشد. ');
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -43,7 +48,8 @@ const RegisterForm = () => {
         {
           Number: Number,
           UserName: UserName,
-          Password: password
+          Password: password,
+          Address: Address
         },
         {
           withCredentials: true // ارسال کوکی‌ها
@@ -81,6 +87,15 @@ const RegisterForm = () => {
             className="form-input"
             value={UserName}
             onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>آدرس منزل</label>
+          <input
+            type="text"
+            className="form-input"
+            value={Address}
+            onChange={(e) => setAddress(e.target.value)}
           />
         </div>
         <div className="form-group">

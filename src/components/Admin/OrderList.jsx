@@ -26,6 +26,7 @@ function OrderList(Params) {
 
                 if (response.ok) {
                     const count = await response.json();
+                    count == 0 && setPageNumber(0);
                     setTotalPages(Math.ceil(count / 10)); // تعداد صفحات را محاسبه کنید
                 }
             } catch (error) {
@@ -105,10 +106,12 @@ function OrderList(Params) {
                 {orders.map((order) => (
                     <li key={order.id} className="list-item">
                         <div className="order-summary">
-                            <p>نام کاربر: {order.user.userName}</p> {/* نام کاربر */}
-                            <p>شماره کاربر: {order.user.number}</p> {/* شماره کاربر */}
+                            <p>نام کاربر: {order.userName}</p> {/* نام کاربر */}
+                            <p>شماره کاربر: {order.userNumber}</p> {/* شماره کاربر */}
+                            <p>آدرس کاربر: {order.address}</p> {/* شماره کاربر */}
+
                             <p>مجموع قیمت: {order.totalPrice}</p> {/* مجموع قیمت سفارش */}
-                            <p>تعداد محصولات: {order.orderDetails.length}</p> {/* تعداد محصولات */}
+                            <p>تعداد محصولات: {order.details.length}</p> {/* تعداد محصولات */}
                             <p>تاریخ سفارش: {order.createAt} </p>
                             <span
                                 className="delivery-toggle"
@@ -124,13 +127,13 @@ function OrderList(Params) {
 
                         {/* جزئیات سفارش */}
                         {openOrderId === order.id && (
-                            <div className="order-details">
+                            <div style={{backgroundColor: "#fff1",paddingTop: "25px"}} className="order-details">
                                 <h4>جزئیات سفارش</h4>
                                 <ul>
-                                    {order.orderDetails.map((item) => (
+                                    {order.details.map((item) => (
                                         <li key={item.id}>
-                                            <p>نام محصول: {item.product.name}</p>
-                                            <p>تعداد: {item.quantity}</p>
+                                            <p>نام محصول: {item.productName}</p>
+                                            <p>تعداد: {item.stock}</p>
                                             <p>قیمت واحد: {item.unitPrice}</p>
                                         </li>
                                     ))}

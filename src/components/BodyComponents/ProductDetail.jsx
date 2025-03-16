@@ -101,17 +101,34 @@ const ProductDetail = () => {
           withCredentials: true, // ارسال کوکی‌ها همراه درخواست
         }
       );
-
+  
       if (response.status === 200) {
-        setProduct((prev) => ({
-          ...prev,
-          reviews: prev.reviews.filter((review) => review.id !== reviewId),
-        }));
+        setProduct((prev) => {
+          const newReviews = prev.reviews.filter((review) => review.id !== reviewId);
+          
+          // محاسبه میانگین جدید
+          const newReviewCount = newReviews.length;
+          let newRate = 0;
+  
+          if (newReviewCount > 0) {
+            const totalRating = newReviews.reduce((sum, review) => sum + review.rating, 0);
+            newRate = totalRating / newReviewCount;
+          }
+  
+          setReviewCount(newReviewCount);
+          setRate(newRate);
+  
+          return {
+            ...prev,
+            reviews: newReviews,
+          };
+        });
       }
     } catch (error) {
       console.error("خطا در حذف دیدگاه:", error);
     }
   };
+  
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -164,7 +181,7 @@ const ProductDetail = () => {
                       {Array.from({ length: emptyStars }).map((_, index) => (
                         <i key={index + 10} className="bi bi-star text-warning"></i>
                       ))}
-
+                      &nbsp;
                       <span className="ms-2">{Rate.toFixed(1)} ({ReviewCount} نظر)</span>
                     </>
                   );

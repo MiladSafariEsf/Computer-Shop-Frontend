@@ -9,7 +9,7 @@ const Header = () => {
       <nav className="nav glass">
         {/* بخش راست */}
         <div className="right-nav">
-          <h1>کامپیوتر حامد</h1>
+          <h1>فروشگاه کامپیوتر</h1>
           <Link to="/" aria-label="صفحه اصلی">
             <i className="fa-solid fa-house-chimney header-item"></i>
           </Link>

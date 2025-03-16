@@ -23,12 +23,15 @@ function Slider() {
 
     useEffect(() => {
         if (slides.length > 0) {
-            new window.bootstrap.Carousel(document.getElementById('carouselExampleInterval'), {
-                interval: 5000,
-                ride: 'carousel'
-            });
+            const carouselElement = document.getElementById('carouselExampleInterval');
+            if (carouselElement) {
+                new window.bootstrap.Carousel(carouselElement, {
+                    interval: 5000,
+                    ride: 'carousel'
+                });
+            }
         }
-    }, []);
+    }, [slides]); // اینجا slides رو وابسته قرار دادم که بعد از مقدار گرفتن، اجرا بشه
 
     return (
         <>

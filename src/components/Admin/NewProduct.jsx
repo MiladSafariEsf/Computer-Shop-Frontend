@@ -54,7 +54,7 @@ function NewProduct() {
       if (response.ok) {
         setSuccessMessage('محصول با موفقیت اضافه شد!');
         setTimeout(() => setSuccessMessage(''), 3000);
-        setFormData({ name: '', price: '', description: '', image: '', CategoriesId: '' ,stock: ''});
+        setFormData({...formData, name: '', price: '', description: '',stock: ''});
       } else {
         alert('خطایی رخ داده است');
       }
@@ -88,7 +88,7 @@ function NewProduct() {
           </label>
           <label>
             موجودی:
-            <input type="text" name="stock" className="input-field glass-input" value={formData.stock} onChange={handleInputChange} />
+            <input type="number" name="stock" className="input-field glass-input" value={formData.stock} onChange={handleInputChange} />
           </label>
         </div>
         <div className="form-group">

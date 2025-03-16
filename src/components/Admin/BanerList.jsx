@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 function BannerListAdmin() {
     const [banners, setBanners] = useState([]);
-    const [pageNumber, setPageNumber] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
     const [editingBanner, setEditingBanner] = useState(null);
     const [editFormData, setEditFormData] = useState({ banerName: '', image: null });
     const [successMessage, setSuccessMessage] = useState("");
@@ -16,7 +14,6 @@ function BannerListAdmin() {
                 });
                 if (response.ok) {
                     const count = await response.json();
-                    setTotalPages(Math.ceil(count / 10));
                 }
             } catch (error) {
                 console.error('Error fetching banner count:', error);
@@ -28,7 +25,7 @@ function BannerListAdmin() {
     useEffect(() => {
         const fetchBanners = async () => {
             try {
-                const response = await fetch(`http://localhost:5195/GetData/GetAllBannersAdmin?PageNumber=${pageNumber}`, {
+                const response = await fetch(`http://localhost:5195/GetData/GetAllBannersAdmin`, {
                     credentials: 'include',
                 });
                 if (response.ok) {
@@ -42,7 +39,7 @@ function BannerListAdmin() {
             }
         };
         fetchBanners();
-    }, [pageNumber]);
+    }, []);
 
     const HandleActiveChange = () => {
         if (IsActive) {
