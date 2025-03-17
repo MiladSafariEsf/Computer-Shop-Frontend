@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import '../../styles/LoginForm.css';
-import ReCAPTCHA from "react-google-recaptcha";
+
 const LoginForm = () => {
   const [Number, setNumber] = useState('');
   const [password, setPassword] = useState('');

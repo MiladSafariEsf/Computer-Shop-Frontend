@@ -16,10 +16,10 @@ function Footer() {
                     <div className="left">
                         <div className="title">ما را در شبکه های اجتماعی دنبال کنید</div>
                         <div className="socials">
-                            <a href="#" className="footer-item"><i className="fab fa-twitter"></i></a>
-                            <a href="#" className="footer-item"><i className="fab fa-instagram"></i></a>
-                            <a href="#" className="footer-item"><i className="fab fa-telegram"></i></a>
-                            <a href="#" className="footer-item"><i className="fab fa-telegram-plane"></i></a>
+                            <a href="#" aria-label="انتقال به صفحه توییتر" className="footer-item"><i className="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="انتقال به صفحه اینستگرام" className="footer-item"><i className="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="انتقال به صفحه تلگرام" className="footer-item"><i className="fab fa-telegram"></i></a>
+                            <a href="#" aria-label="انتقال به صفحه تلگرام" className="footer-item"><i className="fab fa-telegram-plane"></i></a>
                         </div>
                     </div>
                 </div>

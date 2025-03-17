@@ -72,23 +72,23 @@ function NewProduct() {
         <div className="form-group">
           <label>
             نام محصول:
-            <input type="text" name="name" className="input-field glass-input" value={formData.name} onChange={handleInputChange} />
+            <input autoComplete='off' type="text" name="name" className="input-field glass-input" value={formData.name} onChange={handleInputChange} />
           </label>
         </div>
         <div className="form-group">
           <label>
             قیمت:
-            <input type="number" name="price" className="input-field glass-input" value={formData.price} onChange={handleInputChange} />
+            <input autoComplete='off' type="number" name="price" className="input-field glass-input" value={formData.price} onChange={handleInputChange} />
           </label>
         </div>
         <div className="form-group">
           <label>
             توضیحات:
-            <input type="text" name="description" className="input-field glass-input" value={formData.description} onChange={handleInputChange} />
+            <input autoComplete='off' type="text" name="description" className="input-field glass-input" value={formData.description} onChange={handleInputChange} />
           </label>
           <label>
             موجودی:
-            <input type="number" name="stock" className="input-field glass-input" value={formData.stock} onChange={handleInputChange} />
+            <input autoComplete='off' type="number" name="stock" className="input-field glass-input" value={formData.stock} onChange={handleInputChange} />
           </label>
         </div>
         <div className="form-group">

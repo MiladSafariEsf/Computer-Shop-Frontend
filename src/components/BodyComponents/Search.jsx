@@ -20,8 +20,10 @@ function Search() {
     }, []);
 
     const handleSearch = () => {
-        let newApiUrl = `http://localhost:5195/GetData/SearchProduct?search=${searchTerm}`;
-        setApiUrl(newApiUrl);
+        if (searchTerm != "") {
+            let newApiUrl = `http://localhost:5195/GetData/SearchProduct?search=${searchTerm}`;
+            setApiUrl(newApiUrl);
+        }
     };
 
     const handleAdvancedSearch = (e) => {
@@ -45,7 +47,7 @@ function Search() {
                         placeholder="جستجو"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                     />
                     <i className="fa-solid fa-magnifying-glass" onClick={handleSearch} style={{ cursor: 'pointer' }}></i>
                 </div>

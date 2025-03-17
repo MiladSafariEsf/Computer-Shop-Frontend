@@ -40,7 +40,7 @@ function NewBanner() {
       if (response.ok) {
         setSuccessMessage('بنر با موفقیت اضافه شد!');
         setTimeout(() => setSuccessMessage(''), 3000);
-        setFormData({ name: '', image: null });
+        setFormData({...formData , name: ''});
       } else {
         alert('خطایی رخ داده است');
       }
@@ -58,7 +58,7 @@ function NewBanner() {
         <div className="form-group">
           <label>
             نام بنر:
-            <input type="text" name="name" className="input-field glass-input" value={formData.name} onChange={handleInputChange} />
+            <input autoComplete='off' type="text" name="name" className="input-field glass-input" value={formData.name} onChange={handleInputChange} />
           </label>
         </div>
         <div className="form-group">

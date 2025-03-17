@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 function OrderList(Params) {
     const [orders, setOrders] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
     const [successMessage, setSuccessMessage] = useState('');
 
     // وضعیت برای مدیریت باز یا بسته بودن جزئیات سفارش
@@ -26,8 +26,8 @@ function OrderList(Params) {
 
                 if (response.ok) {
                     const count = await response.json();
-                    count == 0 && setPageNumber(0);
-                    setTotalPages(Math.ceil(count / 10)); // تعداد صفحات را محاسبه کنید
+                    console.log(count);
+                    {count > 0 && setTotalPages(Math.ceil(count / 10))}; // تعداد صفحات را محاسبه کنید
                 }
             } catch (error) {
                 console.error('Error fetching order count:', error);

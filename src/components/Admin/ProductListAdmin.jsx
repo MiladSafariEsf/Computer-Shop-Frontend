@@ -4,7 +4,7 @@ function ProductListAdmin() {
   const [products, setProducts] = useState([]);
   const [expandedProducts, setExpandedProducts] = useState({});
   const [pageNumber, setPageNumber] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
   const [editingProduct, setEditingProduct] = useState(null);
   const [editFormData, setEditFormData] = useState({ name: '', price: '', description: '' , stock: ''});
   const [successMessage, setSuccessMessage] = useState("");
@@ -18,7 +18,7 @@ function ProductListAdmin() {
         });
         if (response.ok) {
           const count = await response.json();
-          setTotalPages(Math.ceil(count / 10));
+          {count > 0 && setTotalPages(Math.ceil(count / 10))};
         }
       } catch (error) {
         console.error('Error fetching product count:', error);

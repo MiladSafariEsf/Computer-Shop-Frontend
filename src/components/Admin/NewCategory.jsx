@@ -13,7 +13,7 @@ function NewCategory() {
   // ارسال داده‌ها به سرور
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const categoryData = { CategoryName: formData.categoryName };
 
     try {
@@ -48,6 +48,7 @@ function NewCategory() {
           <label>
             نام دسته‌بندی:
             <input
+              autoComplete='off'
               type="text"
               name="categoryName"
               className="input-field glass-input"

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 function CategoryListAdmin() {
   const [categories, setCategories] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
   const [editingCategory, setEditingCategory] = useState(null);
   const [editFormData, setEditFormData] = useState({ categoryName: '' });
   const [successMessage, setSuccessMessage] = useState("");
@@ -16,7 +16,7 @@ function CategoryListAdmin() {
         });
         if (response.ok) {
           const count = await response.json();
-          setTotalPages(Math.ceil(count / 10));
+          {count > 0 && setTotalPages(Math.ceil(count / 10))};
         }
       } catch (error) {
         console.error('Error fetching category count:', error);
