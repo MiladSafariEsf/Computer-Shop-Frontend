@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 function NewProduct() {
-  const [formData, setFormData] = useState({ name: '', price: '', description: '', image: '', CategoriesId: '' , stock : ''});
+  const [formData, setFormData] = useState({ name: '', price: '', description: '', image: '', CategoriesId: '', stock: '' });
   const [categories, setCategories] = useState([]);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [Message, setMessage] = useState('');
 
   // دریافت دسته‌بندی‌ها از API
   useEffect(() => {
@@ -43,7 +43,6 @@ function NewProduct() {
     form.append('Image', formData.image);
     form.append('CategoriesId', formData.CategoriesId); // اضافه کردن دسته‌بندی به داده‌ها
     form.append('stock', formData.stock); // اضافه کردن دسته‌بندی به داده‌ها
-
     try {
       const response = await fetch('http://localhost:5195/AddData/AddProduct', {
         method: 'POST',
@@ -52,22 +51,24 @@ function NewProduct() {
       });
 
       if (response.ok) {
-        setSuccessMessage('محصول با موفقیت اضافه شد!');
-        setTimeout(() => setSuccessMessage(''), 3000);
-        setFormData({...formData, name: '', price: '', description: '',stock: ''});
+        setMessage('محصول با موفقیت اضافه شد!');
+        setTimeout(() => setMessage(''), 3000);
+        setFormData({ ...formData, name: '', price: '', description: '', stock: '' });
       } else {
-        alert('خطایی رخ داده است');
+        setMessage('خطایی رخ داده است');
+        setTimeout(() => setMessage(''), 3000);
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('خطا در ارسال درخواست');
+      setMessage('خطا در ارسال درخواست');
+      setTimeout(() => setMessage(''), 3000);
     }
   };
 
   return (
     <div className="new-product glass-effect">
       <h2>محصول جدید</h2>
-      {successMessage && <div className="success-message">{successMessage}</div>}
+      {Message && <div className="success-message">{Message}</div>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>
@@ -94,7 +95,7 @@ function NewProduct() {
         <div className="form-group">
           <label>
             دسته‌بندی:
-            <select name="CategoriesId" style={{background : "#fff", color : "#000"}} className="input-field glass-input" value={formData.Id} onChange={handleInputChange}>
+            <select name="CategoriesId" style={{ background: "#fff", color: "#000" }} className="input-field glass-input" value={formData.Id} onChange={handleInputChange}>
               <option>انتخاب کنید</option>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>

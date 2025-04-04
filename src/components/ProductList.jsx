@@ -45,15 +45,29 @@ function ProductList({ apiUrl }) {
 
     const handleAddToCart = (productId) => {
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
-        cart[productId] = (cart[productId] || 0) + 1;
+    
+        // اگه قبلاً اضافه شده بود، کاری نکن
+        if (cart[productId])
+        {
+            setCartStatus(prevStatus => ({
+                ...prevStatus,
+                [productId]: true
+            }));
+            return;
+        }
+    
+        // اضافه کردن محصول
+        cart[productId] = 1;
         localStorage.setItem('cart', JSON.stringify(cart));
-
+    
         // تغییر وضعیت دکمه به "اضافه شد"
         setCartStatus(prevStatus => ({
             ...prevStatus,
             [productId]: true
         }));
     };
+    
+    
 
     if (loading) return (
         <div className="spinner-border m-5" role="status">

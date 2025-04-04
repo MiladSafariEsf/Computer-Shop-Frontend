@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function NewBanner() {
   const [formData, setFormData] = useState({ name: '', image: null });
-  const [successMessage, setSuccessMessage] = useState('');
+  const [Message, setMessage] = useState('');
   const [IsActive , setIsActive] = useState(true)
 
   const HandleActiveChange = () => {
@@ -38,22 +38,25 @@ function NewBanner() {
       });
 
       if (response.ok) {
-        setSuccessMessage('بنر با موفقیت اضافه شد!');
-        setTimeout(() => setSuccessMessage(''), 3000);
+        setMessage('بنر با موفقیت اضافه شد!');
+        setTimeout(() => setMessage(''), 3000);
         setFormData({...formData , name: ''});
       } else {
-        alert('خطایی رخ داده است');
+        setMessage('خطایی رخ داده است');
+        setTimeout(() => setMessage(''), 3000);
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('خطا در ارسال درخواست');
+      setMessage('خطایی رخ داده است');
+      setTimeout(() => setMessage(''), 3000);
+      
     }
   };
 
   return (
     <div className="new-banner glass-effect">
       <h2>بنر جدید</h2>
-      {successMessage && <div className="success-message">{successMessage}</div>}
+      {Message && <div className="success-message">{Message}</div>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>

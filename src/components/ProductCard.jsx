@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function ProductCard({ title, description, price, oldPrice, imageSrc, Id, onAddToCart, isAdded }) {
+function ProductCard({ title, description, price, imageSrc, Id, onAddToCart, isAdded }) {
     const navigate = useNavigate();
 
     return (

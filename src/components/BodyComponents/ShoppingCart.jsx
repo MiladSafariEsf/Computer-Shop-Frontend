@@ -8,41 +8,45 @@ function ShoppingCart() {
     const [products, setProducts] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [Successmessage , setSuccessMessage] = useState('');
+    const [Successmessage, setSuccessMessage] = useState('');
+    const [message, setMessage] = useState('')
     const { isAuthenticated } = useContext(AuthContext);
+    let [rendered, setRendered] = useState(false)
     // بارگذاری سبد خرید از LocalStorage
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem('cart')) || {};
         setCart(storedCart);
+
     }, []);
 
     // بارگذاری اطلاعات محصولات
-    useEffect(() => {
-        const loadProducts = async () => {
-            setLoading(true);
-            const productIds = Object.keys(cart);
-            const fetchedProducts = {};
-
-            for (const productId of productIds) {
-                if (!products[productId]) {
-                    const product = await fetchProductById(productId);
-                    if (product) {
-                        fetchedProducts[productId] = product;
-                    }
-                }
-            }
-
-            setProducts(prevProducts => ({
-                ...prevProducts,
-                ...fetchedProducts
-            }));
-            setLoading(false);
-        };
-
-        if (Object.keys(cart).length > 0) {
+    useEffect(() => {  
+        if ((Object.keys(cart)).length > 0 && rendered == false) {
+            setRendered("true")
             loadProducts();
         }
     }, [cart]);
+
+    const loadProducts = async () => {
+        setLoading(true);
+        const productIds = Object.keys(cart);
+        const fetchedProducts = {};
+
+        for (const productId of productIds) {
+            if (!products[productId]) {
+                const product = await fetchProductById(productId);
+                if (product) {
+                    fetchedProducts[productId] = product;
+                }
+            }
+        }
+
+        setProducts(prevProducts => ({
+            ...prevProducts,
+            ...fetchedProducts
+        }));
+        setLoading(false);
+    };
 
     const fetchProductById = async (productId) => {
         try {
@@ -59,12 +63,17 @@ function ShoppingCart() {
             return null;
         }
     };
-
     const updateCart = (productId, newQuantity) => {
         const updatedCart = { ...cart };
         if (newQuantity <= 0) {
             delete updatedCart[productId];
-        } else {
+        }
+        else if (newQuantity > products[productId].stock) {
+            setMessage(`محصول ${products[productId].name} بیشتر از این مقدار در انبار ندارد`);
+            setTimeout(() => setMessage(""), 3000);
+            return;
+        }
+        else {
             updatedCart[productId] = newQuantity;
         }
         setCart(updatedCart);
@@ -132,10 +141,10 @@ function ShoppingCart() {
 
     if (Object.keys(cart).length === 0) {
         return (<>
-        {Successmessage && <div className="alert alert-success" role="alert">{Successmessage}</div>}
-        <p style={{ color: '#fff' }} className="text-center mt-4">سبد خرید شما خالی است!</p>
+            {Successmessage && <div className="alert alert-success" role="alert">{Successmessage}</div>}
+            <p style={{ color: '#fff' }} className="text-center mt-4">سبد خرید شما خالی است!</p>
         </>
-    );
+        );
     }
 
     if (loading) {
@@ -150,8 +159,9 @@ function ShoppingCart() {
 
     return (
         <div className="container mt-4 glass-container">
-            
+
             <h2 style={{ color: '#fff' }} className="text-center">سبد خرید</h2>
+            <p style={{ color: '#fff' }} className="text-center">{message}</p>
             <div className="cart-cards-container">
                 {Object.keys(cart).map((productId) => {
                     const product = products[productId];
@@ -190,16 +200,16 @@ function ShoppingCart() {
             <div className="total">
                 <h3 style={{ color: '#fff' }}>هزینه کل: {total} تومان</h3>
                 {!isAuthenticated && (<p dir='rtl' className='alertToLogin'>برای پرداخت ابتدا باید وارد حساب کاربری خود شوید.</p>)}
-                
+
                 <div className="Shc-Buttons-Div">
                     {isAuthenticated ? (
-                        
+
                         <button className="btn shc-btn mt-3" onClick={sendOrderToAPI}>
                             پرداخت
                         </button>
                     ) : (
                         <>
-                            
+
                             <button className="btn shc-btn mt-3" onClick={navigateToLogin}>
                                 ورود
                             </button>

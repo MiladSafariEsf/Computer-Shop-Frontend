@@ -26,7 +26,6 @@ function OrderList(Params) {
 
                 if (response.ok) {
                     const count = await response.json();
-                    console.log(count);
                     {count > 0 && setTotalPages(Math.ceil(count / 10))}; // تعداد صفحات را محاسبه کنید
                 }
             } catch (error) {
