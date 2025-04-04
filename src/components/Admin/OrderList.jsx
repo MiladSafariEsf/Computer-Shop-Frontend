@@ -113,7 +113,7 @@ function OrderList(Params) {
                             <p>تعداد محصولات: {order.details.length}</p> {/* تعداد محصولات */}
                             <p>تاریخ سفارش: {order.createAt} </p>
                             <span
-                                className="delivery-toggle"
+                                className={!Params.Delivered ? "delivery-toggle glass-button" : "delivery-toggle"}
                                 onClick={!Params.Delivered ? () => handleDelivery(order.id) : undefined}
                             >
                                 {Params.Delivered ? 'تحویل شده' : 'تحویل'}
