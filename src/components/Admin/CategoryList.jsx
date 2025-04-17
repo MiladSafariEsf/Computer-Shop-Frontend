@@ -16,7 +16,7 @@ function CategoryListAdmin() {
         });
         if (response.ok) {
           const count = await response.json();
-          {count > 0 && setTotalPages(Math.ceil(count / 10))};
+          count > 0 && setTotalPages(Math.ceil(count / 10));
         }
       } catch (error) {
         console.error('Error fetching category count:', error);
@@ -123,6 +123,7 @@ function CategoryListAdmin() {
     <div className="product-list glass-effect">
       {successMessage && <p className="success-message">{successMessage}</p>}
       <h2>لیست دسته‌بندی‌ها</h2>
+      <p>توجه : در صورت حذف یک دسته بندی ، تمام آن کالا هایی که در آن دسته بندی بوده اند حذف خواهند شد! </p>
       <ul className="product-list-container">
         {categories.map((category) => (
           <li key={category.id} className="list-item">

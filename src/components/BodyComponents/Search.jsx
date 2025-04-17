@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from '../ProductList';
-import Footer from '../Footer';
+
 
 function Search() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -20,7 +20,7 @@ function Search() {
     }, []);
 
     const handleSearch = () => {
-        if (searchTerm != "") {
+        if (searchTerm && searchTerm.match(/^\s+$/) === null) {
             let newApiUrl = `http://localhost:5195/GetData/SearchProduct?search=${searchTerm}`;
             setApiUrl(newApiUrl);
         }
@@ -72,6 +72,7 @@ function Search() {
                                             className="Ainput form-control"
                                             type="number"
                                             placeholder="از"
+                                            id='min-price'
                                             value={minPrice}
                                             onChange={(e) => setMinPrice(e.target.value)}
                                         />
@@ -82,6 +83,7 @@ function Search() {
                                             className="Ainput form-control"
                                             type="number"
                                             placeholder="تا"
+                                            id='max-price'
                                             value={maxPrice}
                                             onChange={(e) => setMaxPrice(e.target.value)}
                                         />

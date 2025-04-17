@@ -8,7 +8,6 @@ function Slider() {
         // دریافت تعداد اسلایدرها از API اول
         axios.get('http://localhost:5195/GetData/GetBannerCount') // اینجا آدرس API تعداد اسلایدر را بگذار
             .then(response => {
-                const count = response.data.count; // فرض بر این که API مقدار count را برمی‌گرداند
 
                 // دریافت اطلاعات اسلایدرها از API دوم
                 return axios.get('http://localhost:5195/GetData/GetAllBanners'); // اینجا آدرس API اسلایدرها را بگذار
@@ -35,30 +34,31 @@ function Slider() {
 
     return (
         <>
-        {slides.length === 0 ? <></> : <section className="slider mt-3">
-            <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
-                <div className="carousel-inner">
-                    {slides.map((slide, index) => (
-                        <div key={index} style={{border: "none"}} className={`carousel-item ${index === 0 ? 'active' : ''}`} data-bs-interval="5000">
-                            <img
-                                style={{ borderRadius: '20px', paddingLeft: '5px', paddingRight: '5px' }}
-                                src={`http://localhost:5195/GetData/GetBanerImageByPath?filePath=${slide.banerImageUrl ? slide.banerImageUrl.split('/').pop() : ''}`}
-                                className="d-block w-100"
-                                alt={slide.altText || `Slide ${index + 1}`}
-                            />
-                        </div>
-                    ))}
+            {slides.length === 0 ? <></> : <section className="slider mt-3">
+                <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-inner">
+                        {slides.map((slide, index) => (
+                            <div key={index} style={{ border: "none" }} className={`carousel-item ${index === 0 ? 'active' : ''}`} data-bs-interval="5000">
+                                <img
+                                    style={{ borderRadius: '20px', paddingLeft: '5px', paddingRight: '5px' }}
+                                    src={`http://localhost:5195/GetData/GetBanerImageByPath?filePath=${slide.banerImageUrl ? slide.banerImageUrl.split('/').pop() : ''}`}
+                                    className="d-block w-100"
+                                    alt={slide.altText || `Slide ${index + 1}`}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                    {slides.length > 1 ? <>
+                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button></> : <></>}
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>}
+            </section>}
         </>
     );
 }
