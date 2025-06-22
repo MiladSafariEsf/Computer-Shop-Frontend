@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from '../ProductList';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 
 function Search() {
@@ -49,7 +51,8 @@ function Search() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                     />
-                    <i className="fa-solid fa-magnifying-glass" onClick={handleSearch} style={{ cursor: 'pointer' }}></i>
+                    {/* <i className="fa-solid fa-magnifying-glass" onClick={handleSearch} style={{ cursor: 'pointer' }}></i> */}
+                    <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} onClick={handleSearch} style={{ cursor: 'pointer' }} />
                 </div>
                 <button className="buy-button glass-button mt-2" onClick={() => setShowAdvanced(!showAdvanced)}>
                     {showAdvanced ? 'بستن جستجوی پیشرفته' : 'جستجوی پیشرفته'}

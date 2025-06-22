@@ -1,5 +1,5 @@
-import {React , useContext} from "react";
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { React, useContext } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext.jsx"
 import Header from "./components/Header.jsx";
 import Home from "./components/BodyComponents/Home.jsx";
@@ -16,11 +16,12 @@ import ProductDetail from "./components/BodyComponents/ProductDetail.jsx";
 import MyOrders from "./components/BodyComponents/MyOrders.jsx";
 import ChangePassword from "./components/BodyComponents/ChangePassword.jsx";
 import ChangeName from "./components/BodyComponents/ChangeName.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 const App = () => {
-    const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <>
       <div className="wrapper">
@@ -34,15 +35,15 @@ const App = () => {
             <Route path="/Register" element={< Register />} />
             <Route path="/Login" element={< Login />} />
             <Route path="/ProductDetail/:id" element={< ProductDetail />} />
-            <Route path="/MyOrders" element={isAuthenticated ? < MyOrders /> : <Home/>} />
+            <Route path="/MyOrders" element={isAuthenticated ? < MyOrders /> : <Home />} />
             <Route path="/AdminDashboard" element={<ProtectedRoute>< AdminDashboard /></ProtectedRoute>} />
             <Route path="/OwnerPanel" element={<OwnerProtectedRoute>< OwnerPanel /></OwnerProtectedRoute>} />
-            <Route path="/ChangePassword" element={isAuthenticated ? <ChangePassword/> : <Home/>} />
-            <Route path="/ChangeUserName" element={isAuthenticated ? <ChangeName/> : <Home/>} />
+            <Route path="/ChangePassword" element={isAuthenticated ? <ChangePassword /> : <Home />} />
+            <Route path="/ChangeUserName" element={isAuthenticated ? <ChangeName /> : <Home />} />
             <Route path="*" element={<h1>صفحه مورد نظر یافت نشد</h1>} />
           </Routes>
         </Router>
-        <br/>
+        <br />
         <Footer />
       </div>
     </>

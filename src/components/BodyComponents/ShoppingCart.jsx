@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import "../../styles/ShoppingCart.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 function ShoppingCart() {
     const navigate = useNavigate();
     const [cart, setCart] = useState({});
@@ -177,19 +179,22 @@ function ShoppingCart() {
                                     className="btn shc-btn btn-success btn-sm mx-1"
                                     onClick={() => handleIncreaseQuantity(productId)}
                                 >
-                                    <i className="fa-solid fa-plus"></i>
+                                    {/* <i className="fa-solid fa-plus"></i> */}
+                                    <FontAwesomeIcon className="icon" icon={faPlus} />
                                 </button>
                                 <button
                                     className="btn shc-btn btn-warning btn-sm mx-1"
                                     onClick={() => handleDecreaseQuantity(productId)}
                                 >
-                                    <i className="fa-solid fa-minus"></i>
+                                    {/* <i className="fa-solid fa-minus"></i> */}
+                                    <FontAwesomeIcon className="icon" icon={faMinus} />
                                 </button>
                                 <button
                                     className="btn shc-btn btn-danger btn-sm mx-1"
                                     onClick={() => handleRemoveProduct(productId)}
                                 >
-                                    <i className="fa-solid fa-trash-can"></i>
+                                    {/* <i className="fa-solid fa-trash-can"></i> */}
+                                    <FontAwesomeIcon className="icon" icon={faTrashCan} />
                                 </button>
                             </div>
                         </div>

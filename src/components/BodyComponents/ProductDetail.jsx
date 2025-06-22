@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../../styles/ProductDetail.css"; // ایمپورت فایل استایل
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -101,23 +103,23 @@ const ProductDetail = () => {
           withCredentials: true, // ارسال کوکی‌ها همراه درخواست
         }
       );
-  
+
       if (response.status === 200) {
         setProduct((prev) => {
           const newReviews = prev.reviews.filter((review) => review.id !== reviewId);
-          
+
           // محاسبه میانگین جدید
           const newReviewCount = newReviews.length;
           let newRate = 0;
-  
+
           if (newReviewCount > 0) {
             const totalRating = newReviews.reduce((sum, review) => sum + review.rating, 0);
             newRate = totalRating / newReviewCount;
           }
-  
+
           setReviewCount(newReviewCount);
           setRate(newRate);
-  
+
           return {
             ...prev,
             reviews: newReviews,
@@ -128,7 +130,7 @@ const ProductDetail = () => {
       console.error("خطا در حذف دیدگاه:", error);
     }
   };
-  
+
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -211,12 +213,19 @@ const ProductDetail = () => {
               <div className="d-flex align-items-center mb-3">
                 <div className="rating">
                   {[...Array(5)].map((_, index) => (
-                    <i
+                    // <i
+                    //   key={index}
+                    //   className={`fas fa-star ${index < newRating ? "active-rating-star" : "rating-star"}`}
+                    //   onClick={() => handleStarClick(index)}
+                    //   style={{ cursor: "pointer" }}
+                    // ></i>
+                    <FontAwesomeIcon 
                       key={index}
-                      className={`fas fa-star ${index < newRating ? "active-rating-star" : "rating-star"}`}
+                      icon={faStar}
+                      className={`${index < newRating ? "active-rating-star" : "rating-star"}`}
                       onClick={() => handleStarClick(index)}
                       style={{ cursor: "pointer" }}
-                    ></i>
+                    />
                   ))}
                 </div>
               </div>
@@ -251,10 +260,15 @@ const ProductDetail = () => {
                   <div className="ml-2 UserND"><span>{review.userName || "کاربر ناشناس"}</span><span>{review.date}</span></div>
                   <div className="rating">
                     {[...Array(5)].map((_, index) => (
-                      <i
+                      // <i
+                      //   key={index}
+                      //   className={`fas fa-star ${index < review.rating ? "active-rating-star" : "rating-star"}`}
+                      // ></i>
+                      <FontAwesomeIcon
+                        icon={faStar}
                         key={index}
-                        className={`fas fa-star ${index < review.rating ? "active-rating-star" : "rating-star"}`}
-                      ></i>
+                        className={`${index < review.rating ? "active-rating-star" : "rating-star"}`}
+                      />
                     ))}
                   </div>
                 </div>

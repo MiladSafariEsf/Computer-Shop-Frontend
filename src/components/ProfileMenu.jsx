@@ -4,6 +4,8 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,7 +80,8 @@ const ProfileMenu = () => {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="پروفایل"
           >
-            <i className="fa-solid fa-user"></i>
+            {/* <i className="fa-solid fa-user"></i> */}
+            <FontAwesomeIcon className="icon" icon={faUser} />
           </button>
           {isOpen && (
             <div className="dropdown glass">
@@ -120,7 +123,8 @@ const ProfileMenu = () => {
               </Link>
               <hr />
               <Link onClick={handleLogout} className="ProfileMenu-btn">
-                <i className="fa-solid fa-right-from-bracket"></i>{" "}
+                {/* <i className="fa-solid fa-right-from-bracket"></i> */}
+                <FontAwesomeIcon className="icon" icon={faRightFromBracket}/>{" "}
                 <span style={{ cursor: "pointer" }}>خروج از حساب کاربری </span>
               </Link>
 
